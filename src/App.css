@@ -131,8 +131,4 @@
   background-image: url("/src/assets/GitHub.png");
   background-size: contain;
   padding: 20px 40px; 
-  cursor: pointer;
-  border: none;
-  color: #000000; 
-  font-size: 16px; 
 }
