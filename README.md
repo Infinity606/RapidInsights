@@ -2,7 +2,7 @@
 
 Article Summarizer using OpenAI GPT-4
 
-![image](https://github.com/Infinity606/RapidInsights/assets/57471042/e86116df-4983-415f-adcc-93579b504ddf)
+![image](https://github.com/Infinity606/RapidInsights/assets/57471042/fd48e694-f66e-43ab-bc9c-7dc2a84c0d9b)
 
 ## Website URL
 
