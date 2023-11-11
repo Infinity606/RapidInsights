@@ -8,6 +8,9 @@ const Demo = () => {
     url: "",
     summary: "",
   });
+  const [isInputExpanded, setIsInputExpanded] = useState(false); //for expansion of input box
+  const [isInputExpanded2, setIsInputExpanded2] = useState(false); //for enter button and link icon
+
   const [allArticles, setAllArticles] = useState([]);
   const [copied, setCopied] = useState("");
 
@@ -59,6 +62,31 @@ const Demo = () => {
     }
   };
 
+  const handleInputClick = () => {
+    setIsInputExpanded(true);
+    setTimeout(() => {
+      setIsInputExpanded2(true);
+    }, 214);
+  };
+
+  const handleInputBlur = () => {
+    // Set a timeout to shrink the input box after a brief delay
+    setTimeout(() => {
+      setIsInputExpanded(false);
+      setIsInputExpanded2(false);
+    }, 100); // Adjust the timeout duration as needed
+  };
+
+  const handleClearAll = () => {
+    setAllArticles([]);
+    localStorage.removeItem("articles"); // Clear articles from localStorage
+  }
+
+  useEffect(() => {
+    // Clean up the timeout on component unmount
+    return () => clearTimeout();
+  }, []);
+
   return (
     <section className='mt-16 w-full max-w-xl'>
       {/* Search */}
@@ -67,27 +95,33 @@ const Demo = () => {
           className='relative flex justify-center items-center'
           onSubmit={handleSubmit}
         >
-          <img
-            src={linkIcon}
-            alt='link-icon'
-            className='absolute left-0 my-2 ml-3 w-5'
-          />
+          {isInputExpanded2 && (
+            <>
+              <img
+                src={linkIcon}
+                alt='link-icon'
+                className='absolute left-0 my-2 ml-3 w-5'
+              />
+              <button
+                type='submit'
+                className='submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700 '
+              >
+                <p>↵</p>
+              </button>
+            </>
+          )}
 
           <input
             type='url'
-            placeholder='Paste the article link'
+            placeholder= {isInputExpanded ? '' : 'Paste article link here'}
             value={article.url}
             onChange={(e) => setArticle({ ...article, url: e.target.value })}
             onKeyDown={handleKeyDown}
+            onBlur={handleInputBlur}
             required
-            className='url_input peer' // When you need to style an element based on the state of a sibling element, mark the sibling with the peer class, and use peer-* modifiers to style the target element
+            className={`url_input  ${isInputExpanded ? 'expanded' : ''} ${isInputExpanded ? 'left-align' : ''}`}// When you need to style an element based on the state of a sibling element, mark the sibling with the peer class, and use peer-* modifiers to style the target element     
+            onClick={handleInputClick}
           />
-          <button
-            type='submit'
-            className='submit_btn peer-focus:border-gray-700 peer-focus:text-gray-700 '
-          >
-            <p>↵</p>
-          </button>
         </form>
 
         {/* Browse History */}
@@ -111,6 +145,13 @@ const Demo = () => {
             </div>
           ))}
         </div>
+        {/* Clear All Button */}
+        <button
+            onClick={handleClearAll}
+            className='clear_btn'
+          >
+            Clear All
+          </button>
       </div>
 
       {/* Display Result */}
