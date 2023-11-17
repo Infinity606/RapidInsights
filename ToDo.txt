@@ -1,0 +1,28 @@
+Add a history drop down list
+ - When user searches something up store it in list and there will be a drop down that says "history." When it is pressed with nothing in the list it will say "seems like you havent searched anything try pasting a link." When there are items in the list it will display the 5 newest items. Animation for drop down: when pressed items come down like a ladder. 
+
+        should i keep copy link or should i add article favicon
+
+        pros: looks cleaner and can take user to website
+
+        cons: extra steps for user (has to press copy link and paste it themselves)
+
+ Fix array system:
+ - Store max 5 items, when a 6th item is added delete the oldest item. Stack system. 
+
+ Fix clear all button:
+- make it look cleaner, blurred button background with better font
+
+Add x button:
+- if user does not want to clear the whole list they can press x on the item they want to remove
+
+Possible sections to be added
+- How it works section
+    - 
+- About the creator
+    - Link to my github again
+    - A bit about myself and link to my website "wanna see more of my projects or learn more about  me visit my site:"
+- Footer
+    - Social Media icons 
+
+Add ability for users to set the desired length or compression ratio for sumamries
