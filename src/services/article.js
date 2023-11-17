@@ -1,8 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const rapidApiKey = process.env.ARTICLE_KEY;
-console.log('RapidAPI Key:', rapidApiKey);
-
+var rapidApiKey = process.env.ARTICLE_KEY;
 
 export const articleApi = createApi({
     reducerPath: 'articleApi',
